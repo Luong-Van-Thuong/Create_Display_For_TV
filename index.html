@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Electron 8 Sections App</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div id="container">
+    <div class="section img" data-content="media/image1.jpg" data-type="image">Ảnh 1</div>
+    <div class="section" data-content="media/file1.pdf" data-type="pdf">PDF 1</div>
+    <div class="section" data-content="media/video.mp4" data-type="video">Video 1</div>
+    <div class="section img" data-content="media/image2.jpg" data-type="image">Ảnh 2</div>
+    <div class="section" data-content="media/file1.pdf" data-type="pdf">PDF 2</div>
+    <div class="section" data-content="media/video.mp4" data-type="video">Video 2</div>
+    <div class="section img" data-content="media/image3.jpg" data-type="image">Ảnh 3</div>
+    <div class="section" data-content="media/file1.pdf" data-type="pdf">PDF 3</div>
+  </div>
+
+  <!-- Khu vực hiển thị toàn màn hình -->
+  <div id="fullscreen-viewer" class="hidden">
+    <button id="close-btn">✖ Đóng</button>
+    <div id="content-view"></div>
+  </div>
+
+  <script src="renderer.js"></script>
+</body>
+</html>
