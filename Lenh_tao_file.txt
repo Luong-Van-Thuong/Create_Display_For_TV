@@ -1,0 +1,6 @@
+- Lệnh khởi tạo file trước khi tải lệnh install electron
+	git init -y
+- download electron 
+	npm install electron --save-dev
+- lệnh tải gói để build chương trình 
+	npm install --save-dev electron-builder

@@ -1,43 +1,32 @@
-document.querySelectorAll('.section').forEach(section => {
-    section.addEventListener('click', () => {
-      const contentPath = section.getAttribute('data-content');
-      const contentType = section.getAttribute('data-type');
-      showFullscreenContent(contentPath, contentType);
+function closeFullscreen() {
+    document.getElementById("fullscreen").classList.remove("active");
+    document.getElementById("fullscreen-content").innerHTML = "";
+  }
+  
+  document.querySelectorAll(".grid-item").forEach(item => {
+    item.addEventListener("click", () => {
+      const type = item.getAttribute("data-type");
+      const src = item.getAttribute("data-src");
+  
+      let content;
+      switch (type) {
+        case "image":
+          content = `<img src="${src}" />`;
+          break;
+        case "video":
+          content = `<video src="${src}" autoplay controls></video>`;
+          break;
+        // case "pdf":
+        //   content = `<iframe src="https://mozilla.github.io/pdf.js/web/viewer.html?file=${src}" frameborder="0" style="width:100%;height:100%;"></iframe>`;
+        //   break;
+        case "pdf":
+            content = `<embed src="${src}" type="application/pdf" width="100%" height="100%">`;
+            break;
+
+      }
+  
+      document.getElementById("fullscreen-content").innerHTML = content;
+      document.getElementById("fullscreen").classList.add("active");
     });
   });
-  
-  document.getElementById('close-btn').addEventListener('click', hideFullscreenContent);
-  
-  function showFullscreenContent(path, type) {
-    const viewer = document.getElementById('fullscreen-viewer');
-    const contentView = document.getElementById('content-view');
-    
-    contentView.innerHTML = ''; // Clear previous content
-  
-    let element;
-  
-    if (type === 'image') {
-      element = document.createElement('img');
-      element.src = path;
-    } else if (type === 'pdf') {
-      element = document.createElement('iframe');
-      element.src = path;
-    } else if (type === 'video') {
-      element = document.createElement('video');
-      element.src = path;
-      element.controls = true;
-      element.autoplay = true;
-    }
-  
-    contentView.appendChild(element);
-    viewer.classList.remove('hidden');
-  }
-  
-  function hideFullscreenContent() {
-    const viewer = document.getElementById('fullscreen-viewer');
-    const contentView = document.getElementById('content-view');
-    
-    contentView.innerHTML = '';
-    viewer.classList.add('hidden');
-  }
   
